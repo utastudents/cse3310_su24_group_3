@@ -16,7 +16,8 @@ Turn of Destiny is a multiplayer word game where players compete to guess words 
     cd cse3310_su24_group_3
 
 2. Build the project using Maven:
-    mvn clean install
+    mvn clean install 
+
 
 3. Run the HTTP server:
     /fill/
@@ -33,3 +34,13 @@ Turn of Destiny is a multiplayer word game where players compete to guess words 
 - Noe Sanchez
 - Ravi Ray
 - Tyler C
+
+```bash
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+$ mvn clean
+$ mvn install
+$ mvn package
+$ mvn compile
+$ mvn exec:java 
+```
+mvn exec:java -Dexec.mainClass="uta.cse3310.App"
