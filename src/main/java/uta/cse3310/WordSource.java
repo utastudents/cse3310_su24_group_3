@@ -17,6 +17,6 @@ public class WordSource {
     }
 
     public String ChooseRandomWord() {
-        
+        return ChosenWord;
     }
 }
