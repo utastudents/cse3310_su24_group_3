@@ -22,7 +22,7 @@ public class GameLogic {
 
     }
 
-    public void choosenewWord() {
+    public void chooseNewWord() {
 
     }
 
