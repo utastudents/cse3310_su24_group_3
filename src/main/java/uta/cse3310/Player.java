@@ -15,11 +15,11 @@ public class Player {
     }
 
     public Boolean isActivePlayers() {
-
+        return isActive;
     }
 
     public Boolean setActivePlayer() {
-
+        return isActive;
     }
 
     void buyVowel(char vowel) {
@@ -30,7 +30,7 @@ public class Player {
 
     }
 
-    void solvePuzzle(string solution) {
+    void solvePuzzle(String solution) {
 
     }
 
