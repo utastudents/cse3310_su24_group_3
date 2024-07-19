@@ -27,7 +27,7 @@ public class GameLogic {
     }
 
     public String GetCurrentWord() {
-
+        return currentWord;
     }
 
     void startRound() {
