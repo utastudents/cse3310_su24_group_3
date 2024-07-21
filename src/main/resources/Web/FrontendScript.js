@@ -10,6 +10,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextRound3Button = document.getElementById('NextRound3');
     const PlayAgainButton = document.getElementById('PlayAgain');
 
+    const socket = new WebSocket('ws://localhost:8180');
+    
+    socket.onopen = function(event) {
+        console.log('Connection opened');
+        socket.send('Hello Server');
+    }
+    socket.onmessage = function(event) {
+        console.log('Message from server' + event.data);
+        // handle server messages here 
+    }
+    socket.onclose = function(event) {
+        console.log('Connection closed');
+    }
+    socket.onerror =function(error){
+        console.log('webSocket Error: '+ error);
+    }
+
+
+
+
 
     startButton.addEventListener('click', function() {
         StartScreen.style.display = 'none';
@@ -18,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const display = document.getElementById('CountdownTimer');
         const duration = 120;
         startTimer(duration, display);
+        socket.send("Start Game");
     });
 
     nextRound1Button.addEventListener('click', function() {
@@ -27,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const display = document.getElementById('CountdownTimer');
         const duration = 120;
         startTimer(duration, display);
+        socket.send("Next Round 1");
     });
 
     nextRound2Button.addEventListener('click', function() {
@@ -36,15 +58,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const display = document.getElementById('CountdownTimer');
         const duration = 120;
         startTimer(duration, display);
+        socket.send("Next Round 2");
     });
 
     nextRound3Button.addEventListener('click', function() {
         game3Section.style.display = 'none';
         ResultsSectionContainer.style.display = 'block';
+        socket.send("Next Round 3");
     });
     PlayAgainButton.addEventListener('click', function() {
         resultsScreenSection.style.display = 'none';
         StartScreen.style.display = 'block';
+        socket.send("Play again");
     });
 
 
