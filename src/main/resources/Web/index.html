@@ -1,20 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Turn of Destiny</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="game-container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="Header">
+      <div class="Title">
         <h1>Turn of Destiny</h1>
-        <div id="game-board"></div>
-        <div id="controls">
-            <button id="play">Play</button>
-            <button id="solve">Solve</button>
-            <input type="text" id="solution">
+      </div>
+    </header>
+    <div class="StartSection" id="StartScreen">
+      <div class="PlayersContainer">
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 1</div>
+          <div class="PlayerScore">Score: 0</div>
         </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 2</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 3</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 4</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+      </div>
+      <div class="StartButtonSection">
+        <div class="ButtonConatainer">
+          <button class="CommonButton StartButton" role="button">
+            Start Game
+          </button>
+        </div>
+      </div>
     </div>
-    <script src="main.js"></script>
-</body>
+    <div class="Game1" id="Game1">
+      <div class="Round">Round1</div>
+      <div class="Timer">
+        <h2 class="TimerTitle">Timer</h2>
+        <div id="CountdownTimer"></div>
+      </div>
+      <div class="GameArea1">
+        <div class="WheelSection">
+          <div class="Wheel">Wheel</div>
+          <div class="WheelOutcome">Outcome</div>
+        </div>
+        <div class="Wordssection">
+          <div class="HiddenWord">HiddenWord</div>
+          <div class="BottomSection">
+            <div class="RemainingWords">RemainingWords</div>
+            <div class="ChosenLetter">
+              ChosenLetter
+              <div class="Letter">Letter</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="GameButtons">
+        <button class="CommonButton BuyLetter" id="BuyLetter">
+          Buy Letter
+        </button>
+        <button class="CommonButton Solve" id="Solve">Solve</button>
+        <button class="CommonButton EndTurn" id="EndTurn">End Turn</button>
+        <button class="CommonButton LeaveGame" id="LeaveGame">
+          Leave Game
+        </button>
+      </div>
+
+      <div class="PlayersContainer">
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 1</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 2</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 3</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 4</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+      </div>
+      <div class="NextRound1">
+        <button class="CommonButton" id="NextRound1">Next Round</button>
+      </div>
+    </div>
+    <div class="Game2" id="Game2">
+      <div class="Round">Round2</div>
+      <div class="Timer">
+        <h2 class="TimerTitle">Timer</h2>
+        <div id="CountdownTimer"></div>
+      </div>
+      <div class="GameArea1">
+        <div class="WheelSection">
+          <div class="Wheel">Wheel</div>
+          <div class="WheelOutcome">Outcome</div>
+        </div>
+        <div class="Wordssection">
+          <div class="HiddenWord">HiddenWord</div>
+          <div class="BottomSection">
+            <div class="RemainingWords">RemainingWords</div>
+            <div class="ChosenLetter">
+              ChosenLetter
+              <div class="Letter">Letter</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="GameButtons">
+        <button class="CommonButton BuyLetter" id="BuyLetter">
+          Buy Letter
+        </button>
+        <button class="CommonButton Solve" id="Solve">Solve</button>
+        <button class="CommonButton EndTurn" id="EndTurn">End Turn</button>
+        <button class="CommonButton LeaveGame" id="LeaveGame">
+          Leave Game
+        </button>
+      </div>
+      <div class="PlayersContainer">
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 1</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 2</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 3</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 4</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+      </div>
+      <div class="NextRound2">
+        <button class="CommonButton" id="NextRound2">Next Round</button>
+      </div>
+    </div>
+    <div class="Game3" id="Game3">
+      <div class="Round">Round3</div>
+      <div class="Timer">
+        <h2 class="TimerTitle">Timer</h2>
+        <div id="CountdownTimer"></div>
+      </div>
+      <div class="GameArea1">
+        <div class="WheelSection">
+          <div class="Wheel">Wheel</div>
+          <div class="WheelOutcome">Outcome</div>
+        </div>
+        <div class="Wordssection">
+          <div class="HiddenWord">HiddenWord</div>
+          <div class="BottomSection">
+            <div class="RemainingWords">RemainingWords</div>
+            <div class="ChosenLetter">
+              ChosenLetter
+              <div class="Letter">Letter</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="GameButtons">
+        <button class="CommonButton BuyLetter" id="BuyLetter">
+          Buy Letter
+        </button>
+        <button class="CommonButton Solve" id="Solve">Solve</button>
+        <button class="CommonButton EndTurn" id="EndTurn">End Turn</button>
+        <button class="CommonButton LeaveGame" id="LeaveGame">
+          Leave Game
+        </button>
+      </div>
+
+      <div class="PlayersContainer">
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 1</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 2</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 3</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+        <div class="PlayerCard">
+          <div class="PlayerName">Player 4</div>
+          <div class="PlayerScore">Score: 0</div>
+        </div>
+      </div>
+      <div class="NextRound3">
+        <button class="CommonButton" id="NextRound3">Next Round</button>
+      </div>
+    </div>
+    <div class="ResultsSectionContainer"id="ResultsSectionContainer">
+    <div class="ResultsSection" >
+      <div class="ResultsHeader">
+        <h1>Game Results</h1>
+      </div>
+      <div class="Winner">
+        <h2>Winner</h2>
+        <div class="WinnerDetails">
+          <div class="WinnerName">Player 1</div>
+          <div class="WinnerScore">Score:1600</div>
+        </div>
+      </div>
+      <div class="ScoreSummary">
+        <h2>Scores</h2>
+        <div class="ScoreList">
+          <div class="ScoreEntry">
+            <div class="PlayerName">Player 1</div>
+            <div class="PlayerScore">1600</div>
+          </div>
+          <div class="ScoreEntry">
+            <div class="PlayerName">Player 2</div>
+            <div class="PlayerScore">1300</div>
+          </div>
+          <div class="ScoreEntry">
+            <div class="PlayerName">Player 3</div>
+            <div class="PlayerScore">1000</div>
+          </div>
+          <div class="ScoreEntry">
+            <div class="PlayerName">Player 4</div>
+            <div class="PlayerScore">900</div>
+          </div>
+        </div>
+      </div>
+      <div class="ResultsButtons">
+        <button class="CommonButton" id="PlayAgain">Play Again</button>
+
+      </div>
+    </div>
+  </div>
+    <script src="FrontendScript.js"></script>
+    <script> 
+      const socket = new WebSocket('ws://localhost:8180');
+
+    </script>
+  </body>
+  <footer class="Footer">
+    <div class="Title">
+      <h1>Turn of Destiny</h1>
+    </div>
+    <div class="MadeBy">This Project was made by</div>
+    <div class="GroupMembers">
+      <ul>
+        <li>Noe Sanchez</li>
+        <li>Logan Wells</li>
+        <li>Tyler Crouch</li>
+        <li>Ravi Ray</li>        
+      </ul>
+    </div>
+  </footer>
 </html>
