@@ -6,20 +6,15 @@ import org.java_websocket.server.WebSocketServer;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.WebSocket;
 
-public class GameWebSocket extends GameWebSocket {
-
-    private int port;
-    private WebSocket conn;
+public class GameWebSocket extends WebSocketServer {
 
     public GameWebSocket(int port) {
         super(new InetSocketAddress(port));
-        this.port = port;
     }
 
     @Override
     // Websocket session is opening
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
-        this.conn = conn;
         System.out.println("New connection opened: " + conn.getRemoteSocketAddress());
     }
 
@@ -39,7 +34,12 @@ public class GameWebSocket extends GameWebSocket {
     public void onError(WebSocket conn, Exception ex) {
         ex.printStackTrace();
         if (conn != null) {
+            System.out.println("Error occurred on connection " +conn.getRemoteSocketAddress());
         }
+    }
+    @Override
+    public void onStart(){
+        System.out.println("Websocket server started successfully");
     }
 
     public static void main(String[] args) {
