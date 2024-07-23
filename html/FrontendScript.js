@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         socket.send("Next Round 3");
     });
     PlayAgainButton.addEventListener('click', function() {
-        resultsScreenSection.style.display = 'none';
+        ResultsSectionContainer.style.display = 'none';
         StartScreen.style.display = 'block';
         socket.send("Play again");
     });
