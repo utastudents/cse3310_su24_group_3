@@ -10,24 +10,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextRound3Button = document.getElementById('NextRound3');
     const PlayAgainButton = document.getElementById('PlayAgain');
 
-    const socket = new WebSocket('ws://localhost:8180');
-    
-    socket.onopen = function(event) {
-        console.log('Connection opened');
-        socket.send('Hello Server');
-    }
-    socket.onmessage = function(event) {
-        console.log('Message from server' + event.data);
-        // handle server messages here 
-    }
-    socket.onclose = function(event) {
-        console.log('Connection closed');
-    }
-    socket.onerror =function(error){
-        console.log('webSocket Error: '+ error);
+    var idx = -1;
+    var gameId =-1;
+    class UserEvents{
+        button =-1;
+        PlaerIdx=0;
+        GameId = 0;
     }
 
+    var connection = null;
+    var serverUrl;
+    serverUrl = "ws://"+window.location.hostname +":9103";
 
+    connection = new WebSocket(serverUrl);
+    connection.onopen = function(event){
+        console.log("WebSocket connection opened");
+    }
+    connection.onclose = function(event){
+        console.log("Websocket connection closed");
+        document.getElementById("topMessage").innerHTML = "Server Offline"
+    }
+
+    connection.onmessage =function(event){
+        var msg;
+        msg=event.data;
+        console.log("message received: "+ msg);
+        const obj = JSON.parse(msg);
+        if('YouAre' in obj){
+            idx =obj.YouAre;
+            gameId = obj.GameId;
+        }
+
+
+    }
 
 
 
