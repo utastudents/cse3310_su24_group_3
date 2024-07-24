@@ -1,4 +1,3 @@
-//DRAFT*** comment to be removed when ready for turn in
 package uta.cse3310;
 
 import java.net.InetSocketAddress;
@@ -8,24 +7,22 @@ import org.java_websocket.WebSocket;
 
 public class GameWebSocket extends WebSocketServer {
 
-    public GameWebSocket(int port) {
-        super(new InetSocketAddress(port));
+    public GameWebSocket(int groupNumber) {
+        super(new InetSocketAddress(9100 + groupNumber));
     }
 
     @Override
-    // Websocket session is opening
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
         System.out.println("New connection opened: " + conn.getRemoteSocketAddress());
     }
 
     @Override
-    // Incoming WebSocket messages
     public void onMessage(WebSocket conn, String message) {
         System.out.println("Message received: " + message);
+        // Handle message logic
     }
 
     @Override
-    // WebSocket session is closing
     public void onClose(WebSocket conn, int code, String reason, boolean remote) {
         System.out.println("Connection closed: " + conn.getRemoteSocketAddress() + ", Reason: " + reason);
     }
@@ -34,20 +31,19 @@ public class GameWebSocket extends WebSocketServer {
     public void onError(WebSocket conn, Exception ex) {
         ex.printStackTrace();
         if (conn != null) {
-            System.out.println("Error occurred on connection " +conn.getRemoteSocketAddress());
+            System.out.println("Error occurred on connection " + conn.getRemoteSocketAddress());
         }
     }
+
     @Override
-    public void onStart(){
-        System.out.println("Websocket server started successfully");
+    public void onStart() {
+        System.out.println("WebSocket server started successfully");
     }
 
     public static void main(String[] args) {
-        int port = Integer.parseInt(System.getenv().getOrDefault("HTTP_PORT", "8080")) + 100; // Default port used as of
-                                                                                              // now
-        GameWebSocket server = new GameWebSocket(port);
-        // begin execution of thread
+        int groupNumber = Integer.parseInt(System.getenv().getOrDefault("GROUP_NUMBER", "3")); // Default to group 3
+        GameWebSocket server = new GameWebSocket(groupNumber);
         server.start();
-        System.out.println("WebSocket server started on port: " + port);
+        System.out.println("WebSocket server started on port: " + (9100 + groupNumber));
     }
 }

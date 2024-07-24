@@ -13,8 +13,8 @@ public class HttpHandlerImpl implements HttpHandler {
     private HttpServer server;
     private int port;
 
-    public HttpHandlerImpl(int httpPort) {
-        this.port = httpPort;
+    public HttpHandlerImpl(int groupNumber) {
+        this.port = 9000 + groupNumber;
     }
 
     public void startServer() {
@@ -38,8 +38,8 @@ public class HttpHandlerImpl implements HttpHandler {
     }
 
     public static void main(String[] args) {
-        int port = Integer.parseInt(System.getenv().getOrDefault("HTTP_PORT", "8080"));
-        HttpHandlerImpl httpHandler = new HttpHandlerImpl(port);
+        int groupNumber = Integer.parseInt(System.getenv().getOrDefault("GROUP_NUMBER", "3")); // Default to group 3
+        HttpHandlerImpl httpHandler = new HttpHandlerImpl(groupNumber);
         httpHandler.startServer();
     }
 }

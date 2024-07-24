@@ -1,19 +1,24 @@
 package uta.cse3310;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Scoreboard {
-    
-    private int score;
+    private Map<Integer, Integer> scores;
 
-    public void updateScore(int Player, int score)
-    {
-
+    public Scoreboard() {
+        scores = new HashMap<>();
     }
-    public int getScore(int player)
-    {
-        return score;
-    }
-    public void SortScores()
-    {
 
+    public void updateScore(int playerId, int score) {
+        scores.put(playerId, scores.getOrDefault(playerId, 0) + score);
+    }
+
+    public int getScore(int playerId) {
+        return scores.getOrDefault(playerId, 0);
+    }
+
+    public void sortScores() {
+        // Sort scores logic
     }
 }

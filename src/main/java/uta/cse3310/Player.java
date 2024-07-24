@@ -1,37 +1,41 @@
 package uta.cse3310;
 
 public class Player {
-
     private String name;
     private int score;
     private Boolean isActive;
 
-    public void addPoints(int points) {
+    public Player(String name) {
+        this.name = name;
+        this.score = 0;
+        this.isActive = true;
+    }
 
+    public void addPoints(int points) {
+        this.score += points;
     }
 
     public void resetPoints() {
-
+        this.score = 0;
     }
 
-    public Boolean isActivePlayers() {
+    public Boolean isActivePlayer() {
         return isActive;
     }
 
-    public Boolean setActivePlayer() {
-        return isActive;
+    public void setActivePlayer(Boolean isActive) {
+        this.isActive = isActive;
     }
 
-    void buyVowel(char vowel) {
-
+    public void buyVowel(char vowel) {
+        // Buy vowel logic
     }
 
-    void chooseConsonant(char consonant) {
-
+    public void chooseConsonant(char consonant) {
+        // Choose consonant logic
     }
 
-    void solvePuzzle(String solution) {
-
+    public void solvePuzzle(String solution) {
+        // Solve puzzle logic
     }
-
 }

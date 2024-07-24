@@ -9,40 +9,43 @@ public class GameState {
     private int currentRound;
     private int maxRound;
 
-    public GameState()
-    {
-
-    }
-    public List<Player> getPlayer()
-    {
-        return null;
-    }
-    public void setPlayers(List<Player> players)
-    {
-
-    }
-    public String getCurrentWord(String word)
-    {
-        return word;
-    }
-    
-    public void setGuessedLetters(List<String> guessedLetters)
-    {
-
+    public GameState() {
+        // Initialize game state
     }
 
-    public int getCurrentRound(int round)
-    {
-        return round;
+    public List<Player> getPlayers() {
+        return players;
     }
-    public void setCurrentRound()
-    {
 
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
-    public void restartGameState()
-    {
 
+    public String getCurrentWord() {
+        return currentWord;
     }
-    
 
+    public void setCurrentWord(String word) {
+        this.currentWord = word;
+    }
+
+    public List<String> getGuessedLetters() {
+        return guessedLetters;
+    }
+
+    public void setGuessedLetters(List<String> guessedLetters) {
+        this.guessedLetters = guessedLetters;
+    }
+
+    public int getCurrentRound() {
+        return currentRound;
+    }
+
+    public void setCurrentRound(int round) {
+        this.currentRound = round;
+    }
+
+    public void restartGameState() {
+        // Restart game state logic
+    }
 }

@@ -12,7 +12,7 @@ public class MainServer {
         httpHandler.startServer();
 
         // Start WebSocket server
-        App webSocketServer = new App(port, new Draft_6455());
+        App webSocketServer = new App(port);
         webSocketServer.start();
         System.out.println("WebSocket server started on port: " + port);
     }

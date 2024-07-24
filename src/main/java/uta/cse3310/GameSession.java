@@ -10,30 +10,29 @@ public class GameSession {
     private boolean gameStarted;
     private boolean gameEnded;
 
-    public void GameSession(WordSource wordSource, GameLogic gameLogic)
-    {
+    public GameSession(WordSource wordSource, GameLogic gameLogic) {
+        // Initialize session with word source and game logic
+    }
 
+    public void addPlayer(Player player) {
+        // Add player to session logic
     }
-    public void addPlayer(Player player)
-    {
 
+    public void start() {
+        // Start session logic
     }
-    public void start()
-    {
-        
+
+    public void end() {
+        // End session logic
     }
-    public void end()
-    {
-        
-    }
-    public String processAction(Player player, String action)
-    {
+
+    public String processAction(Player player, String action) {
+        // Process player action logic
         return action;
     }
-    public String getGameState(String State)
-    {
-        return State;
-    }
 
-    
+    public String getGameState() {
+        // Get current game state logic
+        return "State";
+    }
 }
