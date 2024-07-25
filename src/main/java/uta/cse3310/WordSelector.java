@@ -1,17 +1,24 @@
 package uta.cse3310;
 
-import java.util.List;
-
 public class WordSelector {
     private WordSource wordSource;
 
-    public WordSelector(WordSource wordSource) {
-        this.wordSource = wordSource;
+    public WordSelector(WordSource wordSource)
+    {
+
+    }
+    public String selectRandomeWord(String word)
+    {
+        return word;
     }
 
-    public String selectWord() {
-        List<String> words = wordSource.getWords();
-        // Randomly select and return a word from the list
-        return words.get((int) (Math.random() * words.size()));
+    public String selectThreeRandomWords(String words)
+    {
+        return words;
+    }
+    
+    public String selectThreeMeaningfulWords(String words)
+    {
+        return words;
     }
 }
