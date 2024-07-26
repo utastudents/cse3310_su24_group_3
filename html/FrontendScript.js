@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextRound2Button = document.getElementById('NextRound2');
     const nextRound3Button = document.getElementById('NextRound3');
     const PlayAgainButton = document.getElementById('PlayAgain');
-
+    const ShowServerId = document.getElementById("ServerID");
     var idx = -1;
     var gameId =-1;
     class UserEvents{
         button =-1;
         PlaerIdx=0;
-        GameId = 0;
+        GameId = 1;
     }
 
     var connection = null;
@@ -36,12 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
         msg=event.data;
         console.log("message received: "+ msg);
         const obj = JSON.parse(msg);
-        if('YouAre' in obj){
-            idx =obj.YouAre;
-            gameId = obj.GameId;
+
+        if('ServerID' in obj){
+            ShowServerId.innerHTML =obj.ServerID;
         }
-
-
     }
 
 
@@ -53,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const display = document.getElementById('CountdownTimer');
         const duration = 120;
         startTimer(duration, display);
-        socket.send("Start Game");
+        connection.send("Start Game");
     });
 
     nextRound1Button.addEventListener('click', function() {
@@ -63,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const display = document.getElementById('CountdownTimer');
         const duration = 120;
         startTimer(duration, display);
-        socket.send("Next Round 1");
+        connection.send("Next Round 1");
     });
 
     nextRound2Button.addEventListener('click', function() {
@@ -73,18 +71,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const display = document.getElementById('CountdownTimer');
         const duration = 120;
         startTimer(duration, display);
-        socket.send("Next Round 2");
+        connection.send("Next Round 2");
     });
 
     nextRound3Button.addEventListener('click', function() {
         game3Section.style.display = 'none';
         ResultsSectionContainer.style.display = 'block';
-        socket.send("Next Round 3");
+        connection.send("Next Round 3");
     });
     PlayAgainButton.addEventListener('click', function() {
         ResultsSectionContainer.style.display = 'none';
         StartScreen.style.display = 'block';
-        socket.send("Play again");
+        connection.send("Play again");
     });
 
 

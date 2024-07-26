@@ -29,9 +29,10 @@ body
         text-decoration: underline;
         text-underline-offset: 10px;
     }
-.StartSection
-    {
-        display: block;
+
+    .ServerID{
+        padding-top: 10px;
+        margin: 10px;
     }
 .PlayersContainer
     {

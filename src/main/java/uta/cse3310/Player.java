@@ -51,8 +51,8 @@ public class Player {
         return isActive;
     }
 
-    void buyVowel(char vowel) {
-
+    void buyLetter(char leter) {
+        
     }
 
     void chooseConsonant(char consonant) {

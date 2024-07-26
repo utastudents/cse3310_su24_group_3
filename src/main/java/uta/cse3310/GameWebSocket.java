@@ -8,6 +8,8 @@ import org.java_websocket.WebSocket;
 
 public class GameWebSocket extends WebSocketServer {
 
+
+    
     public GameWebSocket(int port) {
         super(new InetSocketAddress(port));
     }
@@ -22,6 +24,33 @@ public class GameWebSocket extends WebSocketServer {
     // Incoming WebSocket messages
     public void onMessage(WebSocket conn, String message) {
         System.out.println("Message received: " + message);
+
+        switch (message) {
+            case "Start Game":
+                //handle start game logic
+                System.out.println(message);
+                break;
+            case "Next Round 1":
+                //handle  Round 1 logic
+                System.out.println(message);
+                break;
+            case "Next Round 2":
+                //handle  Round 2 logic
+                System.out.println(message);
+                break;
+            case "Next Round 3":
+                //handle Round 3 logic
+                System.out.println(message);
+                break;
+            case "Play again":
+                //handle Round 3 logic
+                System.out.println(message);
+                break;
+        
+            default:
+                System.out.println("Unknown message recived "+ message);
+                break;
+        }
     }
 
     @Override
@@ -43,8 +72,9 @@ public class GameWebSocket extends WebSocketServer {
     }
 
     public static void main(String[] args) {
-        int port = Integer.parseInt(System.getenv().getOrDefault("HTTP_PORT", "8080")) + 100; // Default port used as of
-                                                                                              // now
+        int defaultHttpPort =9003;
+        int port = Integer.parseInt(System.getenv().getOrDefault("HTTP_PORT", String.valueOf(defaultHttpPort))) + 100; // Default port used as of
+         System.out.println("Websocket server port: "+ port);
         GameWebSocket server = new GameWebSocket(port);
         // begin execution of thread
         server.start();

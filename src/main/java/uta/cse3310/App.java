@@ -8,6 +8,8 @@ import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.time.Instant;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.drafts.Draft;
@@ -25,15 +27,12 @@ public class App extends WebSocketServer {
 
   // All games currently underway on this server are stored in
   // the vector ActiveGames
-  private Vector<String> ActiveGames;
-
-  private int GameId;
-
-  private int connectionId;
-
-  private Instant startTime;
 
 
+  private static final int  MAX_PLAYERS_PER_SEVER = 4;
+  private static int currentServerId =1;
+
+  private static Map<Integer, Integer> serverPlayersCounts = new HashMap<>();
   public App(int port) {
     super(new InetSocketAddress(port));
   }
@@ -50,6 +49,21 @@ public class App extends WebSocketServer {
   public void onOpen(WebSocket conn, ClientHandshake handshake) 
   {
     System.out.println(conn.getRemoteSocketAddress().getAddress().getHostAddress()+ " connected");
+    int serverId = getCurrentServerID();
+    serverPlayersCounts.put(serverId, serverPlayersCounts.getOrDefault(serverId,0)+1);
+    
+    // sent the current server id to the client
+    Map<String,Object> response = new HashMap<>();
+    response.put("ServerID",serverId);
+    conn.send(new Gson().toJson(response));
+
+    if (serverPlayersCounts.get(serverId) >= MAX_PLAYERS_PER_SEVER)
+    {
+      currentServerId++;
+    }
+  }
+  private int getCurrentServerID(){
+    return currentServerId;
   }
 
   @Override
