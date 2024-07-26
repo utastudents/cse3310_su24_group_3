@@ -1,5 +1,7 @@
 package uta.cse3310;
 
+import java.util.ArrayList;
+
 public class WordSelector {
     private WordSource wordSource;
 
@@ -7,17 +9,17 @@ public class WordSelector {
     {
 
     }
-    public String selectRandomeWord(String word)
+    public String selectRandomWord(String word)
     {
         return word;
     }
 
-    public String selectThreeRandomWords(String words)
+    public ArrayList<String> selectThreeRandomWords(ArrayList<String> words)
     {
         return words;
     }
     
-    public String selectThreeMeaningfulWords(String words)
+    public ArrayList<String> selectThreeMeaningfulWords(ArrayList<String> words)
     {
         return words;
     }
