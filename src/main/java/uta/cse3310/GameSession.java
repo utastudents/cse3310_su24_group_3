@@ -16,8 +16,8 @@ import com.google.gson.JsonParser;
 
 public class GameSession extends WebSocketServer {
     private static final int MAX_PLAYERS_PER_SESSION = 4;
-    private List<Session> sessions = new ArrayList<>();
-    private Map<WebSocket, Player> playerConnections = new HashMap<>();
+    public List<Session> sessions = new ArrayList<>();
+    public Map<WebSocket, Player> playerConnections = new HashMap<>();
     private Gson gson =new Gson();
 
     public class Session {
@@ -160,7 +160,7 @@ public class GameSession extends WebSocketServer {
         System.out.println("GameSession server started!");
     }
 
-    private Session getAvailableSession() {
+    public Session getAvailableSession() {
         for (Session session : sessions) {
             if (!session.isFull()) {
                 return session;
@@ -171,7 +171,7 @@ public class GameSession extends WebSocketServer {
         return newSession;
     }
 
-    private void startGame(Session session) {
+    public void startGame(Session session) {
         // Notify all players in the session to start the game
         for (Player player : session.getPlayers()) {
             // Send start game message to each player's WebSocket connection

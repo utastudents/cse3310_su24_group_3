@@ -1,4 +1,4 @@
-/*package uta.cse3310;
+package uta.cse3310;
 
 import org.junit.jupiter.api.Test;
 
@@ -31,4 +31,4 @@ public class WordSourceTest {
         String word = wordSource.chooseRandomWord();
         assertNotNull(word);
     }
-}*/
+}

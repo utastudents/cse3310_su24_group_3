@@ -28,7 +28,7 @@ public class App extends WebSocketServer {
   private GameSession gameSession;
 
   private int connectionId =0;
-  private String serverId; // serverID
+  public String serverId; // serverID
 
   public App(int port ,String serverId) {
       super(new InetSocketAddress(port));
