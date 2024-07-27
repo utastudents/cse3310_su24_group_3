@@ -118,4 +118,12 @@ public class Player {
             return false;
         }
     }
+
+
+    public static void clearPlayerList(){
+        playerList.clear();
+    }
+    public static List<Player> getPlayerList(){
+        return playerList;
+    }
 }
