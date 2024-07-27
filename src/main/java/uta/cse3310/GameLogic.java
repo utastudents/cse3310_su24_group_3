@@ -41,7 +41,11 @@ public class GameLogic {
     void playerAction(Player player, String action) {
 
     }
-
+    public String getGameState()
+    {
+        String str = "broadcast message to players ";
+        return str;
+    }
 
 
 }

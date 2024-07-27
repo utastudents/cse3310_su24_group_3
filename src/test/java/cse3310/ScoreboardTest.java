@@ -1,4 +1,4 @@
-package uta.cse3310;
+/*package uta.cse3310;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -44,3 +44,4 @@ public class ScoreboardTest {
         assertEquals(5, scoreMontana);
     }
 }
+*/

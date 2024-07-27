@@ -126,4 +126,8 @@ public class Player {
     public static List<Player> getPlayerList(){
         return playerList;
     }
+
+    public void sendMessage(String message){
+        System.out.print("Message is: " + message);
+    }
 }
