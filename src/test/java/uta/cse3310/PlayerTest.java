@@ -83,7 +83,7 @@ public class PlayerTest extends TestCase {
     public void testSetAndIsActivePlayer() {
         Player player = new Player("Mia");
         player.setActivePlayer(false);
-        assertFalse(player.isActivePlayer());// shoudl return false
+        assertFalse(player.isActivePlayer());// shoud return false
     }
 
     public void testBuyVowel() {

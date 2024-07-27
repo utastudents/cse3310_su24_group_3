@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     socket.onmessage = function(event) {
         console.log('Message from server' + event.data);
+
+        
         // handle server messages here 
     }
     socket.onclose = function(event) {
