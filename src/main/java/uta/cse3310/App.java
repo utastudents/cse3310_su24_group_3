@@ -25,16 +25,15 @@ public class App extends WebSocketServer {
 
   // All games currently underway on this server are stored in
   // the vector ActiveGames
-  private Vector<String> ActiveGames;
+  private GameSession gameSession;
 
-  private int GameId;
+  private int connectionId =0;
+  private String serverId; // serverID
 
-  private int connectionId;
-
-  private Instant startTime;
-
-  public App(int port) {
+  public App(int port ,String serverId) {
       super(new InetSocketAddress(port));
+      gameSession = new GameSession(new InetSocketAddress(port+100));
+      this.serverId =serverId;
   }
 
   public App(InetSocketAddress address) {
@@ -47,16 +46,23 @@ public class App extends WebSocketServer {
 
   @Override
   public void onOpen(WebSocket conn, ClientHandshake handshake) {
-      System.out.println(conn.getRemoteSocketAddress().getAddress().getHostAddress() + " connected");
+    connectionId++;
+    System.out.println(conn.getRemoteSocketAddress().getAddress().getHostAddress() + " connected");
+    ServerEvent E = new ServerEvent();
+    gameSession.assignPlayerToSession(conn);
+    conn.send("you are conneected to " + serverId);
+
   }
 
   @Override
   public void onClose(WebSocket conn, int code, String reason, boolean remote) {
       System.out.println(conn + " has closed");
+      gameSession.removePlayerFromSession(conn);
   }
 
   @Override
   public void onMessage(WebSocket conn, String message) {
+    gameSession.handleMessage(conn, message);
   }
 
   @Override
@@ -75,6 +81,7 @@ public class App extends WebSocketServer {
   public void onStart() {
       System.out.println("server started");
       setConnectionLostTimeout(0);
+      gameSession.start();
   }
 
   public static void main(String[] args) {
@@ -84,8 +91,8 @@ public class App extends WebSocketServer {
       System.out.println("http server started on port: 9003");
       // create and start websocket server
       port = 9003;
-      App A = new App(port + 100);
+      App A = new App(port + 100,"Server 1");
       A.start();
-      System.out.println("Websocket Server started on port: " + (port + 100));
+      System.out.println("Websocket Server 1 started on port: " + (port + 100));
   }
 }

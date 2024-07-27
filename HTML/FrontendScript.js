@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'play_again':
                 // handle play again
                 break;
+           
             // more cases ...
             default:
                 console.log('Unknown message type ' + messages.type);
@@ -53,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
     startButton.addEventListener('click', function() {
         StartScreen.style.display = 'none';
         game1Section.style.display = 'block';
-
+    
         const display = document.getElementById('CountdownTimer1');
         const duration = 120;
         startTimer(duration, display);
-        socket.send(JSON.stringify({ type: 'start_game' }));
+        socket.send(JSON.stringify({ type: 'start_game_button' }));
     });
 
     nextRound1Button.addEventListener('click', function() {
@@ -123,13 +124,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
+    
     function handleStartGame(data) {
         console.log('Game started:', data);
+        StartScreen.style.display = 'none';
+        game1Section.style.display = 'block';
+    
+        const display = document.getElementById('CountdownTimer1');
+        const duration = 120;
+        startTimer(duration, display);
     }
 
     function handleNextRound(data) {
         console.log('Next round:', data.round);
+        
     }
 
     function handleGameResult(data) {
