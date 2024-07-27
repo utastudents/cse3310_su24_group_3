@@ -11,37 +11,49 @@ public class GameState {
 
     public GameState()
     {
-
+        this.players = null;
+        this.currentWord = "";
+        this.guessedLetters = null;
+        this.currentRound = 0;
+        this.maxRound = 0;
     }
+
     public List<Player> getPlayer()
     {
-        return null;
+        return players;
     }
     public void setPlayers(List<Player> players)
     {
-
+        this.players = players;
     }
-    public String getCurrentWord(String word)
+    public String getCurrentWord()
     {
-        return word;
+        return currentWord;
+    }
+
+    public List<String> getGuessedLetters() {
+        return guessedLetters;
     }
     
     public void setGuessedLetters(List<String> guessedLetters)
     {
-
+        this.guessedLetters = guessedLetters;
     }
 
-    public int getCurrentRound(int round)
+    public int getCurrentRound()
     {
-        return round;
+        return currentRound;
     }
-    public void setCurrentRound()
+    public void setCurrentRound(int currentRound)
     {
-
+        this.currentRound = currentRound;
     }
     public void restartGameState()
     {
-
+        this.players = null;
+        this.currentWord = "";
+        this.guessedLetters.clear();
+        this.currentRound = 0;
     }
     
 
