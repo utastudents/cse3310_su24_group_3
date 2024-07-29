@@ -50,7 +50,12 @@ public class GameServer {
             System.out.println("Player " + player.getName() + " removed.");
         }
     }
-
+    public List<Player> getPlayer(){
+        return players;
+    }
+    public int getSessionId(){
+        return sessionId;
+    }
     public void createSession() {
         sessionId = generateSessionId();
         System.out.println("Session " + sessionId + " created.");

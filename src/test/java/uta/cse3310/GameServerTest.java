@@ -1,23 +1,22 @@
-/* package uta.cse3310;
+package uta.cse3310;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import java.util.List;
-
+import static org.junit.jupiter.api.Assertions.*;
 public class GameServerTest {
 
     private GameServer gameServer;
     private Player player1;
     private Player player2;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         gameServer = new GameServer();
         player1 = new Player("Hannah");
         player2 = new Player("Montanna");
-        gameServer.addPlayers(player1);
-        gameServer.addPlayers(player2);
+        gameServer.addPlayer(player1);
+        gameServer.addPlayer(player2);
         gameServer.createSession();
     }
 
@@ -45,19 +44,19 @@ public class GameServerTest {
     public void testBroadcastGameState() {
         gameServer.broadcastGameState(gameServer.getSessionId());
     }
-
+    
     @Test
     public void testAddPlayers() {
         Player newPlayer = new Player("Alice");
-        gameServer.addPlayers(newPlayer);
-        List<Player> players = gameServer.getPlayers();
+        gameServer.addPlayer(newPlayer);
+        List<Player> players = gameServer.getPlayer();
         assertTrue(players.contains(newPlayer));
     }
 
     @Test
     public void testRemovePlayers() {
-        gameServer.removePlayers(player1.getId());
-        List<Player> players = gameServer.getPlayers();
+        gameServer.removePlayer(player1.getId());
+        List<Player> players = gameServer.getPlayer();
         assertFalse(players.contains(player1));
     }
 
@@ -67,4 +66,4 @@ public class GameServerTest {
         int sessionId = gameServer.getSessionId();
         assertNotNull(sessionId);
     }
-}*/
+}
