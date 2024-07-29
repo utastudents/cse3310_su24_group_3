@@ -4,12 +4,18 @@ import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
 
-import junit.framework.Test;
+
+//import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
+//import junit.framework.TestSuite;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
+import org.junit.jupiter.api.BeforeEach;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import static org.mockito.Mockito.*;
 
@@ -20,6 +26,7 @@ public class GameSessionTest extends TestCase {
     private Player mockPlayer1;
     private Player mockPlayer2;
 
+    @BeforeEach
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -39,6 +46,7 @@ public class GameSessionTest extends TestCase {
         gameSession.playerConnections.put(mockSocket2, mockPlayer2);
     }
 
+    @Test
     public void testAssignPlayerToSession() {
         gameSession.assignPlayerToSession(mockSocket1);
 
@@ -48,6 +56,7 @@ public class GameSessionTest extends TestCase {
         assertTrue(session.hasPlayer(mockPlayer1));
     }
 
+    @Test
     public void testRemovePlayerFromSession() {
         GameSession.Session session = gameSession.getAvailableSession();
         session.addPlayer(mockPlayer1);
@@ -57,6 +66,7 @@ public class GameSessionTest extends TestCase {
         assertFalse(session.hasPlayer(mockPlayer1));
     }
 
+    @Test
     public void testHandleNextRound() {
         GameSession.Session session = gameSession.getAvailableSession();
         session.addPlayer(mockPlayer1);
@@ -69,6 +79,7 @@ public class GameSessionTest extends TestCase {
         verify(mockSocket2).send("{\"type\": \"next_round\", \"round\": 2}");
     }
 
+    @Test
     public void testStartGame() {
         GameSession.Session session = gameSession.getAvailableSession();
         session.addPlayer(mockPlayer1);
@@ -81,6 +92,7 @@ public class GameSessionTest extends TestCase {
         verify(mockSocket2).send("{\"type\": \"start_game\"}");
     }
 
+    @Test
     public void testHandleMessage() {
         String message = "{\"type\": \"start_game_button\"}";
         gameSession.handleMessage(mockSocket1, message);
@@ -89,8 +101,9 @@ public class GameSessionTest extends TestCase {
         verify(mockSocket1).send("{\"type\": \"start_game\"}");
     }
 
-    public static Test suite() {
-        TestSuite suite = new TestSuite(GameSessionTest.class);
-        return suite;
-    }
-}
+//     @Test
+//     public static Test suite() {
+//         TestSuite suite = new TestSuite(GameSessionTest.class);
+//         return suite;
+//     }
+ }
