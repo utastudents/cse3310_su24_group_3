@@ -1,26 +1,32 @@
-/* package uta.cse3310;
+package uta.cse3310;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ScoreboardTest {
 
     private Scoreboard scoreboard;
 
-    @Before
+@BeforeEach
     public void setUp() {
         scoreboard = new Scoreboard();
     }
 
-    @Test
+@Test
     public void testUpdateScoreNewPlayer() {
         scoreboard.updateScore("Hannah", 10);
         int score = scoreboard.getScore("Hannah");
         assertEquals(10, score);
     }
 
-    @Test
+@Test
     public void testUpdateScoreExistingPlayer() {
         scoreboard.updateScore("Hannah", 10);
         scoreboard.updateScore("Hannah", 5);
@@ -44,4 +50,3 @@ public class ScoreboardTest {
         assertEquals(5, scoreMontana);
     }
 }
-*/
