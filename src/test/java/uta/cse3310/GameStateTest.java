@@ -1,11 +1,12 @@
-/* package uta.cse3310;
+package uta.cse3310;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GameStateTest {
 
@@ -13,7 +14,7 @@ public class GameStateTest {
     private Player player1;
     private Player player2;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         gameState = new GameState();
         player1 = new Player("Hannah");
@@ -71,4 +72,3 @@ public class GameStateTest {
         assertEquals(0, gameState.getCurrentRound());
     }
 }
-*/

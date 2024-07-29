@@ -30,6 +30,9 @@ public class GameState {
     {
         return currentWord;
     }
+    public void setCurrentWord(String currentWord) {
+        this.currentWord = currentWord;
+    }
 
     public List<String> getGuessedLetters() {
         return guessedLetters;
