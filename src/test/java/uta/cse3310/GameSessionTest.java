@@ -1,4 +1,4 @@
-package uta.cse3310;
+ package uta.cse3310;
 
 import java.net.InetSocketAddress;
 import java.util.HashMap;
@@ -101,9 +101,9 @@ public class GameSessionTest extends TestCase {
         verify(mockSocket1).send("{\"type\": \"start_game\"}");
     }
 
-//     @Test
-//     public static Test suite() {
-//         TestSuite suite = new TestSuite(GameSessionTest.class);
-//         return suite;
-//     }
+   @Test
+     public static Test suite() {
+         TestSuite suite = new TestSuite(GameSessionTest.class);
+        return suite;
+     }
  }
