@@ -12,7 +12,6 @@ public class WordSource {
   public WordSource() {
     this.filePath = "words.txt"; // Default file path
   }
-
   public void getSource(String filePath) {
     this.filePath = filePath;
     readWordsFromFile();

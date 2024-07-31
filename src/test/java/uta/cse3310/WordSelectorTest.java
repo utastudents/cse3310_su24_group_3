@@ -1,47 +1,57 @@
 package uta.cse3310;
 
-import junit.framework.TestCase;
-import org.mockito.Mockito;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class WordSelectorTest extends TestCase {
+public class WordSelectorTest  {
 
-    private WordSource wordSourceMock;
+    private WordSource wordSource;
     private WordSelector wordSelector;
 
-
+    @BeforeEach
     public void setUp() throws Exception {
-        super.setUp();
-        wordSourceMock = Mockito.mock(WordSource.class);
-        wordSelector = new WordSelector(wordSourceMock);
+        wordSource = new WordSource();
+        setWordsForTesting(wordSource,Arrays.asList("example","test","apple","banana","cherry","love","hope","faith"));
+        wordSelector = new WordSelector(wordSource);
     }
 
-
+    @Test
     public void testSelectRandomWord() {
-        List<String> words = Arrays.asList("example","test"); // mock list of words
-        Mockito.when(wordSourceMock.getWords()).thenReturn(words);
-
+        List<String> words = wordSource.getWords();
         String selectedWord = wordSelector.selectRandomWord();
         assertTrue(words.contains(selectedWord));// checks if it contains the random word 
     }
 
-
+    @Test
     public void testSelectThreeRandomWords() {
-        ArrayList<String> words = new ArrayList<>(Arrays.asList("apple", "banana", "cherry"));
-        Mockito.when(wordSourceMock.getWords()).thenReturn(words);
+        List<String> words = wordSource.getWords();
         ArrayList<String> selectedWords = wordSelector.selectThreeRandomWords();
         assertEquals(3,selectedWords.size()); // checks if the size of the slected words are three
         assertTrue(words.containsAll(selectedWords)); // checks if the words are in there
     }
-
+    @Test
     public void testSelectThreeMeaningfulWords() {
-        ArrayList<String> words = new ArrayList<>(Arrays.asList("love", "hope", "faith"));
-        Mockito.when(wordSourceMock.getWords()).thenReturn(words);
-        ArrayList<String> selectedWords = wordSelector.selectThreeMeaningfulWords();// still need to make the logic for this and test it.
+        List<String> meaningfulWords = Arrays.asList("love", "hope", "faith");
+        setWordsForTesting(wordSource, meaningfulWords);
+        List<String> selectedWords = wordSelector.selectThreeMeaningfulWords();
         assertEquals(3,selectedWords.size());// checks if the size of the slected words are three
-        assertTrue(words.containsAll(selectedWords));// checks if the words are in there
+        assertTrue(meaningfulWords.containsAll(selectedWords));// checks if the words are in there
+    }
+    private void setWordsForTesting(WordSource wordSource,List<String> words){
+        try{
+            java.lang.reflect.Field wordsField = WordSource.class.getDeclaredField("words");
+            wordsField.setAccessible(true);
+            wordsField.set(wordSource,words);
+        }catch(NoSuchFieldException|IllegalAccessException e){
+            e.printStackTrace();
+            fail("failed to set words field for testing");
+        }
     }
 }
