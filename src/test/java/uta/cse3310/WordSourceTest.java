@@ -3,8 +3,6 @@
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,15 +13,14 @@ public class WordSourceTest {
     @Test
     public void testReadWordsFromFile() throws IOException {
         WordSource wordSource = new WordSource();
-        Files.write(Paths.get("words.txt"), "apple\nbanana\ncherry".getBytes());
         wordSource.getSource("words.txt");
         List<String> words = wordSource.getWords();
-        assertEquals(3, words.size());
-        assertTrue(words.contains("apple"));
-        assertTrue(words.contains("banana"));
-        assertTrue(words.contains("cherry"));
+        assertEquals(9895, words.size());
+        assertTrue(words.contains("celebrity"));
+        assertTrue(words.contains("cell"));
+        assertTrue(words.contains("cest"));
+        assertFalse(words.contains("brat"));// not in the words.txt file and should return false
     }
-
     @Test
     public void testChooseRandomWord() {
         WordSource wordSource = new WordSource();

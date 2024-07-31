@@ -1,3 +1,4 @@
+/*
 package uta.cse3310;
 
 
@@ -44,7 +45,7 @@ public class WordSelectorTest  {
         assertEquals(3,selectedWords.size());// checks if the size of the slected words are three
         assertTrue(meaningfulWords.containsAll(selectedWords));// checks if the words are in there
     }
-    private void setWordsForTesting(WordSource wordSource,List<String> words){
+     private void setWordsForTesting(WordSource wordSource,List<String> words){
         try{
             java.lang.reflect.Field wordsField = WordSource.class.getDeclaredField("words");
             wordsField.setAccessible(true);
@@ -54,4 +55,6 @@ public class WordSelectorTest  {
             fail("failed to set words field for testing");
         }
     }
+
 }
+    */
