@@ -20,6 +20,7 @@ import java.util.Vector;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class App extends WebSocketServer {
 
@@ -85,14 +86,21 @@ public class App extends WebSocketServer {
   }
 
   public static void main(String[] args) {
-      int port = 9003;
-      HttpServer H = new HttpServer(port, "HTML");
+
+      Dotenv dotenv = Dotenv.load();
+    // getting the env. variables, if it cat get it it'll default to what they should be
+      String httpPortStr = dotenv.get("HTTP_PORT", "9003");
+      String WebsocketPort = dotenv.get("WEBSOCKET_PORT", "9103");
+      int httpport = Integer.parseInt(httpPortStr);
+      int websocketPort = Integer.parseInt(WebsocketPort);
+
+
+      HttpServer H = new HttpServer(httpport, "HTML");
       H.start();
-      System.out.println("http server started on port: 9003");
+      System.out.println("http server started on port: "+httpport);
       // create and start websocket server
-      port = 9003;
-      App A = new App(port + 100,"Server 1");
+      App A = new App(websocketPort,"Server 1");
       A.start();
-      System.out.println("Websocket Server 1 started on port: " + (port + 100));
+      System.out.println("Websocket Server 1 started on port: " + websocketPort);
   }
 }
