@@ -7,7 +7,7 @@ public class GameState {
     private String currentWord;
     private List<String> guessedLetters;
     private int currentRound;
-    private int maxRound;
+    
 
     public GameState()
     {
@@ -15,7 +15,6 @@ public class GameState {
         this.currentWord = "";
         this.guessedLetters = null;
         this.currentRound = 0;
-        this.maxRound = 0;
     }
 
     public List<Player> getPlayer()

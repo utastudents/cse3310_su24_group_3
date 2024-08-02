@@ -10,15 +10,14 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
-import com.google.gson.Gson;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class GameSession extends WebSocketServer {
-    private static final int MAX_PLAYERS_PER_SESSION = 4;
     public List<Session> sessions = new ArrayList<>();
     public Map<WebSocket, Player> playerConnections = new HashMap<>();
-    private Gson gson =new Gson();
+   
 
     public class Session {
         private static final int MAX_PLAYERS = 4;

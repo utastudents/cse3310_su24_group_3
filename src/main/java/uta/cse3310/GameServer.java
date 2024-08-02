@@ -6,12 +6,12 @@ import java.util.List;
 public class GameServer {
     private int sessionId;
     private List<Player> players;
-    private WordSource wordSource;
+    
     private GameLogic gameLogic;
 
     public GameServer() {
         players = new ArrayList<>();
-        wordSource = new WordSource();
+       
         gameLogic = new GameLogic();
     }
 
