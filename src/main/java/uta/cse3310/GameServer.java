@@ -6,13 +6,15 @@ import java.util.List;
 public class GameServer {
     private int sessionId;
     private List<Player> players;
-    
+
     private GameLogic gameLogic;
+
 
     public GameServer() {
         players = new ArrayList<>();
-       
+
         gameLogic = new GameLogic();
+
     }
 
     public void startGame() {
@@ -21,6 +23,7 @@ public class GameServer {
     }
 
     public void endGame() {
+
         System.out.println("Game has ended.");
         broadcastMessage("Game has ended.");
     }

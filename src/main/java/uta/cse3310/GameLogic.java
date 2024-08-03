@@ -8,15 +8,24 @@ public class GameLogic {
 
     private List<Player> players;
     private int currentRound;
-    private WordSource wordSorce;
+    private WordSource wordSource;
     private String currentWord;
 
 
 
     public GameLogic() {
         players = new ArrayList<>();
-        wordSorce = new WordSource();
+        wordSource = new WordSource();
         currentRound=0;
+    }
+
+    public GameLogic(WordSource wordSource){
+        players = new ArrayList<>();
+        this.wordSource = wordSource;
+        currentRound =0;
+    }
+    public void setWordSource(WordSource wordSource){
+        this.wordSource =wordSource;
     }
 
     public void addPlayers(Player player) {
@@ -36,7 +45,7 @@ public class GameLogic {
     }
 
     public void chooseNewWord() {
-        currentWord = wordSorce.chooseRandomWord();
+        currentWord = wordSource.chooseRandomWord();
     }
 
     public String GetCurrentWord() {
@@ -79,6 +88,8 @@ public class GameLogic {
     public List<Player> getPlayers() {
         return players;
     }
-
+    public int getCurrentRound(){
+    return currentRound;
+    }
 
 }

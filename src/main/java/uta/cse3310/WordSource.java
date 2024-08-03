@@ -3,6 +3,7 @@ package uta.cse3310;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WordSource {
@@ -22,6 +23,7 @@ public class WordSource {
       words = Files.readAllLines(Paths.get(filePath));
     } catch (IOException e) {
       e.printStackTrace();
+      words = new ArrayList<>();
     }
   }
 
