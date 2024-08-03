@@ -16,7 +16,7 @@ public class App extends WebSocketServer {
   // the vector ActiveGames
   private GameSession gameSession;
 
-  private int connectionId =0;
+
   public String serverId; // serverID
 
   public App(int port ,String serverId) {
@@ -35,9 +35,8 @@ public class App extends WebSocketServer {
 
   @Override
   public void onOpen(WebSocket conn, ClientHandshake handshake) {
-    connectionId++;
+
     System.out.println(conn.getRemoteSocketAddress().getAddress().getHostAddress() + " connected");
-    ServerEvent E = new ServerEvent();
     gameSession.assignPlayerToSession(conn);
     conn.send("you are conneected to " + serverId);
 
